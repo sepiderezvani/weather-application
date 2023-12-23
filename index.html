@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Prompt:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .autocomplete-list{
+            position: absolute;
+            top: 95px;
+            left: 18px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: calc(100% - 200px);
+            max-height: 200px;
+            background-color: rgba(144, 179, 217, 0.90);
+            overflow-y: auto;
+            z-index: 10;
+
+        }
+        .autocomplete-list li{
+            color: rgba(14, 70, 129, 0.99);
+            padding: 15px;
+            /*width: calc(100% - 30px);*/
+            cursor: pointer;
+        }
+        /*.autocomplete-list li:hover{*/
+        /*    background-color: rgba(14, 73, 134, 0.60);*/
+        /*    color: rgb(188, 218, 250);*/
+        /*}*/
+        li.hl{
+            background-color: rgba(14, 73, 134, 0.60);
+        }
+        .autocomplete-list li:hover{
+            background-color: rgba(14, 73, 134, 0.60);
+        }
+        .list-group-item active{
+            transition: background-color 0.3s ease;
+            background-color: rgba(14, 73, 134, 0.60);
+        }
+    </style>
+</head>
+<body>
+<div class="container col-lg-8 border-2">
+<div class="row col-md-10 col-sm-12">
+    <form id="input" class="input-group mb-3 mt-5 p-3 offset-sm-1">
+        <input id="city" type="text" autocomplete="off" class="form-control col-sm-12 autocomplete-input" placeholder="Enter city name" style="box-shadow: 2px 3px 5px dodgerblue">
+        <ul class="autocomplete-list list-group" id="city-list-auto-complete">
+        </ul>
+        <div class="input-group-append p-3" style="box-shadow: 3px 5px 8px #0560bb;margin-left: 20px;border-radius: 10px;font-size: 1.8rem;font-family: Prompt;" >
+            <button class="btn" type="submit">Get updates</button>
+        </div>
+    </form>
+</div>
+<div class="row col-lg-12 justify-content-between" id="weatherContainer">
+    <div class="text col-xl-6 col-lg-6 col-sm-12 p-4 col-md-6" style="background-color:rgba(190,211,241,0.4);border-radius: 20px;margin-left:70px ">
+        <marquee id="cityName" style="font-size: 2rem;">Tehran</marquee>
+        <span id="temp" class="" style="font-size: 4rem;">12°C</span>
+        <span id="main" class="p-2" style="font-size: 2rem;color: #0560bb">Clouds</span>
+        <marquee style="font-size: 1.5rem;" id="description">broken clouds</marquee>
+    </div>
+    <div id="image" class="image col-lg-4 col-xl-4 col-md-4 col-sm-12 mt-4">
+        <img src="https://openweathermap.org/img/wn/02n@2x.png" class="p-3 col-lg-10 col-md-8" style="box-shadow: 2px 3px 5px dodgerblue;border-radius: 50%;margin-right: 100px;" alt="">
+    </div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
