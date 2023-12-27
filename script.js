@@ -5,11 +5,8 @@ const temp = document.getElementById("temp")
 const main = document.getElementById("main")
 const description = document.getElementById("description")
 const image = document.getElementById("image")
-input.onsubmit = (e) => {
-    e.preventDefault();
-    weatherUpdate(city.value);
-    city.value = ""
-}
+const loading = document.getElementById("loading")
+const weatherContainer = document.getElementById("weatherContainer")
 
 citiesApi = () => {
     const xhr_city_list = new XMLHttpRequest();
@@ -120,11 +117,14 @@ function synchroniseSuggestionsBox(){
         auto_complete_list.scrollTop =sOffsetTop
     }
 }
+loading.style.display="none"
 weatherUpdate = (city) => {
+loading.style.display ="block"
     const xhr = new XMLHttpRequest()
     xhr.open("GET", `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cad7ec124945dcfff04e457e76760d90`);
     xhr.send();
     xhr.onload = () => {
+        loading.style.display ="none"
         if (xhr.status === 404) {
             alert("place not found")
         } else {
@@ -137,5 +137,11 @@ weatherUpdate = (city) => {
         }
     }
 
+}
+input.onsubmit = (e) => {
+    e.preventDefault();
+    weatherUpdate(city.value);
+    city.value = ""
+    auto_complete_list.style.display = "none"
 }
 weatherUpdate("tehran")
